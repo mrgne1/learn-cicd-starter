@@ -25,5 +25,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        
       - name: Check Formatting
         run: test -z $(go fmt ./...)
+
+      - name: Lint files
+        uses: dominikh/staticcheck-action@v1
+        with:
+          version: "latest"
