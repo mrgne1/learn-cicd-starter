@@ -21,4 +21,11 @@ jobs:
       - name: Setup Docker
         run: './scripts/buildprod.sh'
 
+      - name: Set up Cloud SDK;
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: '> = 363.0.0'
+
+      - name: Deploy Docker to Cloud
+        run: 'gcloud builds submit --tag us-central1-docker.pkg.dev/notely-438800/notely-ar-repo/notely:latest'
 
